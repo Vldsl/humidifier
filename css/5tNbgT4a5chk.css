@@ -1,0 +1,118 @@
+.galery {
+	padding: 35px 0 0;
+}
+
+.reviews-block{
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.reviews_slider img {
+	margin: 0 auto;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	max-height: 300px;
+    object-fit: cover;
+}
+.reviews_slider .slick-prev,
+.reviews_slider .slick-next{
+	top: calc(50% - 20px);
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    margin-top: -20px;
+    display: block;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 0;    
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+	background-color: #0074ae;
+
+    /* background: url(../img/arrow.png) no-repeat #2f80ed; */
+    z-index: 3;
+}
+.reviews_slider .slick-prev{
+    left: 20px;
+}
+.reviews_slider .slick-next{
+    right: 20px;
+}
+
+
+.reviews_section {
+	padding: 0 40px;
+}
+.reviews_section .description {
+	padding: 0 0 25px;
+	font-size: 24px;
+	line-height: 30px;
+	color: #fff;
+	text-align: center;
+}
+.reviews_section .reviews_list {
+	margin: 0 0 30px;
+}
+.review_item {
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+	color: #333;
+	overflow: hidden;
+	/* width: 410px; */
+	margin:20px auto;
+}
+
+.review_item p{
+	padding: 10px 10px 30px;
+    text-align: center;
+}
+.photo {
+	display: block;
+}
+.author_block {
+	text-align:center;
+	padding: 20px;
+	position: relative;
+}
+.reviews_section .avatar {
+	display: block;
+	float: left;
+	width: 64px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+.reviews_section .author_info {
+	padding: 10px 0 0 79px;
+}
+.reviews_section .author_info .name {
+	font-weight: 700;
+}
+
+.slick-initialized .slick-slide{
+	padding: 30px;
+}
+
+@media screen and (max-width: 800px){
+	.slick-initialized .slick-slide{
+		padding: 5px;
+	}
+
+	.reviews-block{
+		padding: 5px;
+	}
+
+	.reviews-block .col-12{
+		padding: 0px;
+	}
+}
+
+.how-container .how-item__icon {
+    min-width: 100px;
+}
