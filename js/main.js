@@ -1,3 +1,5 @@
+import { sendTelegramMessage } from "./sendToTelegram.mjs";
+
 document.addEventListener("DOMContentLoaded", function () {
   const loader = document.querySelector(".loader");
 
@@ -37,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("scroll", updateHeader);
 
-  // Проверяем положение скролла при загрузке страницы
   updateHeader();
 });
 
@@ -52,7 +53,6 @@ if (document.documentElement.offsetWidth <= 1200) {
     const newPaddingTop = currentPaddingTop + parseInt(headerHeight);
 
     iconMenu.classList.toggle("active");
-    // document.body.classList.toggle("lock");
     menuBody.classList.toggle("active");
     if (menuBody.classList.contains("active")) {
       menuBody.style.paddingTop = `${newPaddingTop + 20}px`;
@@ -98,3 +98,16 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", replaceMenuBody);
   replaceMenuBody();
 });
+
+const modalForm = document.querySelector(".modal-body form");
+if (modalForm) {
+  const formSelect = document.querySelector(".form-select");
+  const inputName = document.querySelector("input[name='name']");
+  const inputPhone = document.querySelector("input[name='phone']");
+
+  const formSelectCount = formSelect.dataset.count;
+  modalForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    sendTelegramMessage(formSelect.value, inputPhone.value, inputName.value);
+  });
+}
