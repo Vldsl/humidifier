@@ -28,6 +28,5 @@ export const sendTelegramMessage = async (
     });
 
     const data = await response.json();
-    console.log(data);
   }
 };

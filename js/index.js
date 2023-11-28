@@ -100,19 +100,24 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const modalForm = document.querySelector(".modal-body form");
+
 if (modalForm) {
   const formSelect = document.querySelector(".form-select");
-  const inputName = document.querySelector("input[name='name']");
-  const inputPhone = document.querySelector("input[name='phone']");
 
-  const formSelectCount = formSelect.dataset.count;
-  modalForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    sendTelegramMessage(
-      inputPhone.value,
-      inputName.value,
-      formSelect.value,
-      formSelect.dataset.prise
-    );
-  });
+  if (formSelect && formSelect.options.length > 0) {
+    const selectedOption = formSelect.options[formSelect.selectedIndex];
+
+    const inputName = document.querySelector("input[name='name']");
+    const inputPhone = document.querySelector("input[name='phone']");
+
+    modalForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      sendTelegramMessage(
+        inputPhone.value,
+        inputName.value,
+        formSelect.value,
+        selectedOption.dataset.prise
+      );
+    });
+  }
 }
