@@ -108,6 +108,11 @@ if (modalForm) {
   const formSelectCount = formSelect.dataset.count;
   modalForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    sendTelegramMessage(formSelect.value, inputPhone.value, inputName.value);
+    sendTelegramMessage(
+      inputPhone.value,
+      inputName.value,
+      formSelect.value,
+      formSelect.dataset.prise
+    );
   });
 }
