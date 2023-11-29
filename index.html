@@ -540,11 +540,11 @@ l-159 275 391 393 392 393 53 -58 c29 -32 81 -97 115 -145z m-947 -933 c215
             </div>
             <div class="intro__content">
               <p class="intro__info">
-                Якщо ви хочете створити затишну атмосферу у своєму домі та
-                поліпшити якість повітря, то цей нічник зволожувач повітря з
-                імітацією полум'я й резервуаром для ефірної олії є чудовим
-                вибором. Він не тільки поліпшить ваше здоров'я, але й створить
-                прекрасну атмосферу для розслаблення та відпочинку.
+                Цей нічник зволожувач повітря із імітацією полум'я та
+                резервуаром для ефірної олії - чудовий вибір для створення
+                затишної атмосфери у вашому домі та поліпшення якості повітря.
+                Він не лише сприятиме вашому здоров'ю, але й створить прекрасну
+                атмосферу для розслаблення та відпочинку.
               </p>
 
               <div class="price-block intro__price-block">
@@ -1100,31 +1100,38 @@ l-159 275 391 393 392 393 53 -58 c29 -32 81 -97 115 -145z m-947 -933 c215
                 type="text"
                 placeholder="Ваше ім'я"
                 name="name"
-                required=""
+                required
               />
               <input
                 class="form-control form-control-lg mt-3"
                 type="text"
                 placeholder="Ваш номер телефону"
                 name="phone"
-                autocomplete="off"
-                required=""
+                required
               />
 
               <button type="submit" class="btn-buy mt-5">
                 Зробити замовлення
               </button>
+              <p>Ми вам зателефонуємо!</p>
             </form>
           </div>
+        </div>
+      </div>
+      <div class="notice" id="myNotice">
+        <div class="notice-content">
+          <p>Дякуємо за ваше замовлення!</p>
+        </div>
+      </div>
+      <div class="eror">
+        <div class="notice-content">
+          <p>Невiрний номер телефону</p>
         </div>
       </div>
     </div>
 
     <script src="https://unpkg.com/imask"></script>
     <script src="js/bootstrap.bundle.js"></script>
-    <script type="module" src="js/sendToTelegram.mjs"></script>
-    <script type="module" src="js/index.js"></script>
-
-    <script></script>
+    <script src="js/index.js"></script>
   </body>
 </html>

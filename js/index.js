@@ -1,4 +1,31 @@
-import { sendTelegramMessage } from "./sendToTelegram.mjs";
+const TELEGRAM_BOT_TOKEN = "6714113757:AAGbpOVZRF-Gy8bCc5B2vKnF0sTuaV4R5FU";
+const telegramBotToken = TELEGRAM_BOT_TOKEN;
+const chatIds = [518709933, 592035412];
+
+let registrationNumber = 1;
+
+const sendTelegramMessage = async (phoneNumber, userName, count, text) => {
+  const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+
+  const message = `New registration #${registrationNumber}:\nPhone Number: ${phoneNumber}\nName: ${userName}\nКоличество: ${count}\nЦена: ${text}`;
+  registrationNumber++;
+  console.log(message);
+
+  for (const chatId of chatIds) {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message,
+      }),
+    });
+
+    const data = await response.json();
+  }
+};
 
 document.addEventListener("DOMContentLoaded", function () {
   const loader = document.querySelector(".loader");
@@ -99,25 +126,57 @@ document.addEventListener("DOMContentLoaded", () => {
   replaceMenuBody();
 });
 
+const notice = document.querySelector(".notice");
+
 const modalForm = document.querySelector(".modal-body form");
 
 if (modalForm) {
+  const showAndHideNotice = () => {
+    notice.style.display = "block";
+    notice.classList.add("fade-out");
+
+    setTimeout(function () {
+      notice.style.display = "none";
+    }, 2000);
+  };
+
+  const eror = document.querySelector(".eror");
+  const showAndHideEror = () => {
+    eror.style.display = "block";
+    eror.classList.add("fade-out");
+
+    setTimeout(function () {
+      eror.style.display = "none";
+    }, 2000);
+  };
+
   const formSelect = document.querySelector(".form-select");
 
-  if (formSelect && formSelect.options.length > 0) {
+  let optionText;
+
+  formSelect.addEventListener("change", function () {
     const selectedOption = formSelect.options[formSelect.selectedIndex];
+    optionText = selectedOption.text;
+  });
 
-    const inputName = document.querySelector("input[name='name']");
-    const inputPhone = document.querySelector("input[name='phone']");
+  const inputName = document.querySelector("input[name='name']");
+  const inputPhone = document.querySelector("input[name='phone']");
 
-    modalForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      sendTelegramMessage(
-        inputPhone.value,
-        inputName.value,
-        formSelect.value,
-        selectedOption.dataset.prise
-      );
-    });
-  }
+  modalForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (inputPhone.value.includes("_")) {
+      showAndHideEror();
+      return;
+    }
+    sendTelegramMessage(
+      inputPhone.value,
+      inputName.value,
+      formSelect.value,
+      optionText
+    );
+    showAndHideNotice();
+    inputName.value = "";
+    inputPhone.value = "";
+    formSelect.value = "";
+  });
 }
