@@ -1,17 +1,24 @@
-# dist
-
-MACOSX
-.Saved
-_arc
-bower_components
-node_modules
-.vscode
-.publish
-.DS_Store
+# Logs
+logs
 *.log
-*.sublime-*
-*.rar
-*.zip
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
 .idea
-ex_files
-Thumbs.db
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

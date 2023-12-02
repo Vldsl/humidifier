@@ -4,16 +4,17 @@ const chatIds = [518709933, 592035412];
 
 let registrationNumber = 1;
 
-export const sendTelegramMessage = async (
+export const sendToTelegramMessage = async (
   phoneNumber,
   userName,
   count,
-  prise
+  text
 ) => {
   const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
 
-  const message = `New registration #${registrationNumber}:\nPhone Number: ${phoneNumber}\nName: ${userName}\nКоличество: ${count}\nЦена: ${prise}`;
+  const message = `New registration #${registrationNumber}:\nPhone Number: ${phoneNumber}\nName: ${userName}\nКоличество: ${count}\nЦена: ${text}`;
   registrationNumber++;
+  console.log(message);
 
   for (const chatId of chatIds) {
     const response = await fetch(url, {

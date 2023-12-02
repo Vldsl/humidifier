@@ -1,5 +1,7 @@
 @use "sass:math";
 @use "sass:map";
+@import "bootstrap";
+@import "normalize.css";
 @import "null";
 
 // Percent
@@ -35,7 +37,6 @@ p {
   margin: 0;
 }
 // Изменить единицы в относительные
-// Подкоректировать текст на странице на украинский язык
 .btn-buy {
   padding: 20px 30px;
   max-width: 80%;
@@ -175,6 +176,22 @@ body {
   //   overflow: hidden;
   //   touch-action: none;
   // }
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  > main {
+    flex: 1 1 auto;
+  }
+
+  > * {
+    min-width: 0;
+  }
 }
 
 section {
